@@ -1,5 +1,8 @@
 env_variable.json
 
+*.toml
+secrets.toml
+
 data/datacracy_slack
 
 .vscode
