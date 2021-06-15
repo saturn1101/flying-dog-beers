@@ -1,3 +1,2 @@
 freeglut3-dev
 libgtk2.0-dev
-python-3.8.5
