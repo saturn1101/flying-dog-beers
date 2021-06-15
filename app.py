@@ -16,11 +16,11 @@ from datetime import datetime as dt
 st.set_page_config(layout="wide")
 
 st.title('DataCracy ATOM Tiến Độ Lớp Học')
-with open('./Documents/Github/flying-dog-beers/env_variable.json','r') as j:
-    json_data = json.load(j)
+#with open('./Documents/Github/flying-dog-beers/env_variable.json','r') as j:
+    #json_data = json.load(j)
 
 #SLACK_BEARER_TOKEN = os.environ.get('SLACK_BEARER_TOKEN') ## Get in setting of Streamlit Share
-SLACK_BEARER_TOKEN = json_data['SLACK_BEARER_TOKEN']
+SLACK_BEARER_TOKEN = st.secrets['SLACK_BEARER_TOKEN']
 DTC_GROUPS_URL = ('https://raw.githubusercontent.com/anhdanggit/atom-assignments/main/data/datacracy_groups.csv')
 #st.write(json_data['SLACK_BEARER_TOKEN'])
 
@@ -28,7 +28,7 @@ DTC_GROUPS_URL = ('https://raw.githubusercontent.com/anhdanggit/atom-assignments
 def load_users_df():
     # Slack API User Data
     endpoint = "https://slack.com/api/users.list"
-    headers = {"Authorization": "Bearer {}".format(json_data['SLACK_BEARER_TOKEN'])}
+    headers = {"Authorization": "Bearer {}".format(st.secrets['SLACK_BEARER_TOKEN'])}
     response_json = requests.post(endpoint, headers=headers).json() 
     user_dat = response_json['members']
 
